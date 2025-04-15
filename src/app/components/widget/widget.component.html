@@ -1,0 +1,36 @@
+<div
+  class="border group rounded-xl border-[var(--mat-sys-outline-variant)] p-7! relative shadow-2xl overflow-hidden box-border cursor-move"
+  [style.background]="data().background ?? 'var(--mat-sys-surface-bright)'"
+  [style.color]="data().color ?? 'inhaerit'"
+  [style.height]="'100%'"
+  cdkDrag
+  cdkDragPreviewContainer="parent"
+>
+  <h3>{{ data().label }}</h3>
+  @if (store.isEditMode()) {
+  <button
+    mat-icon-button
+    class="absolute top-5 right-5"
+    (click)="showOptions.set(true)"
+    [style.--mdc-icon-button-icon-color]="data().color ?? 'inherit'"
+  >
+    <mat-icon>settings</mat-icon>
+  </button>
+  }
+  <ng-container [ngComponentOutlet]="data().content" />
+  <button
+    mat-icon-button
+    class="absolute invisible group-hover:visible bottom-5 right-5"
+     (click)="store.openWidgetModal(data().id)"
+    [style.--mdc-icon-button-icon-color]="data().color ?? 'inherit'"
+  >
+    <mat-icon>open_in_full</mat-icon>
+  </button>
+
+  
+
+  @if (showOptions()) {
+  <app-widget-options [(showOptions)]="showOptions" [data]="data()" />
+  }
+  <div *cdkDragPlaceholder></div>
+</div>

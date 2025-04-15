@@ -1,0 +1,27 @@
+<div
+  cdkDropList
+  (cdkDropListDropped)="widgetPutBack($event)"
+  cdkDrag
+  class="bg-[var(--mat-sys-primary-container)] text-[var(--mat-sys-on-primary-container)] absolute right-0 top-[80px] w-[200px] z-[2] rounded-2xl"
+>
+  <div class="flex flex-col gap-2 p-4 rounded-lg">
+    <div>
+    <div class="flex gap-2 items-center">
+      <mat-icon>drag_indicator</mat-icon>
+      Widgets
+    </div>
+    </div>
+    @for (widget of store.widgetsToAdd(); track widget.id) {
+    <div cdkDrag [cdkDragData]="widget.id">
+      <div
+        class="text-sm text-center rounded-2xl bg-[var(--mat-sys-surface-container)] text-[var(--mat-sys-inverse-surface)] cursor-move px-4 py-2 hover:bg-[var(--mat-sys-surface-container-high)]"
+      >
+        {{ widget.label }}
+        <div *cdkDragPlaceholder></div>
+      </div>
+    </div>
+    <div cdkDropList></div>
+    }
+     @empty { Drag widgets here to remove }
+  </div>
+</div>

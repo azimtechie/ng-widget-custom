@@ -1,0 +1,21 @@
+<div
+  class="border border-[var(--mat-sys-outline-variant)] h-full"
+  [style.background]="data.background ?? 'var(--mat-sys-surface-bright)'"
+  [style.color]="data.color ?? 'inherit'"
+>
+  <button
+    mat-icon-button
+    class="absolute top-4 z-10 right-5"
+    (click)="dialogRef.close()"
+    [style.--mdc-icon-button-icon-color]="data.color ?? 'inherit'"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  <h2 mat-dialog-title [style.color]="data.color">{{ data.label }}</h2>
+  <mat-dialog-content
+    [style.background]="data.background ?? 'var(--mat-sys-surface-bright)'"
+    [style.color]="data.color ?? 'inherit'"
+  >
+    <ng-container [ngComponentOutlet]="data.content" />
+  </mat-dialog-content>
+</div>

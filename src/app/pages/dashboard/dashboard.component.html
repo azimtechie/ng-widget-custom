@@ -1,0 +1,44 @@
+<div class="m-4" cdkDropListGroup>
+  <div class="mb-6 flex items-center justify-between">
+    <h2 class="text-2xl">Dashboard Widgets</h2>
+    <div class="flex gap-2 items-center">
+      <button mat-raised-button (click)="toggleTheme()">
+        <mat-icon class="m-0">{{
+          themeService.isDark() ? "light_mode" : "dark_mode"
+        }}</mat-icon>
+      </button>
+      <button mat-raised-button>
+        <mat-icon class="m-0" (click)="store.toggleEdit()">{{
+          !store.isEditMode() ? "edit" : "save"
+        }}</mat-icon>
+      </button>
+      <button mat-raised-button (click)="widgetsOpen.set(!widgetsOpen())">
+        @if(widgetsOpen()) {
+        <mat-icon>close</mat-icon>
+        } @else {
+        <mat-icon>add_circle</mat-icon>
+        } Widgets
+      </button>
+    </div>
+  </div>
+  @if (widgetsOpen()) {
+  <app-widget-panel></app-widget-panel>
+  }
+
+  <div
+    class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-[150px] gap-4"
+    #dashboard
+  >
+    @for (widget of store.addedWidgets(); track widget.id) {
+    <app-widget
+      cdkDropList
+      (cdkDropListDropped)="drop($event)"
+      [data]="widget"
+      [cdkDropListData]="widget.id"
+    ></app-widget>
+    }
+    <div cdkDropList (cdkDropListDropped)="drop($event)">
+      <div></div>
+    </div>
+  </div>
+</div>
