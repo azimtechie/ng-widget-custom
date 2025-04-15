@@ -7,8 +7,8 @@
           themeService.isDark() ? "light_mode" : "dark_mode"
         }}</mat-icon>
       </button>
-      <button mat-raised-button>
-        <mat-icon class="m-0" (click)="store.toggleEdit()">{{
+      <button mat-raised-button (click)="store.toggleEdit()">
+        <mat-icon class="m-0" >{{
           !store.isEditMode() ? "edit" : "save"
         }}</mat-icon>
       </button>
