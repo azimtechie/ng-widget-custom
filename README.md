@@ -1,59 +1,72 @@
-# WidgetsDemo2
+# Widgets Demo 2
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.7.
+A modern Angular dashboard application featuring customizable widgets, drag-and-drop layout, and Material Design styling. This project demonstrates advanced Angular patterns, state management, and integration with Tailwind CSS for rapid UI development.
 
-## Development server
+## Features
+- Add, remove, and rearrange dashboard widgets
+- Drag-and-drop widget management
+- Widget customization (size, color, etc.)
+- Light/Dark theme toggle
+- Persistent widget layout (localStorage)
+- Built with Angular 19, Angular Material, and Tailwind CSS
 
-To start a local development server, run:
+## Getting Started
 
-```bash
-ng serve
+### Prerequisites
+- Node.js (v18 or later recommended)
+- npm (v9 or later)
+
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone <your-repo-url>
+   cd widgets-demo-2
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+### Library Installation
+Install the required libraries if you are integrating these features into another Angular project:
+```sh
+npm install @angular/material @angular/cdk @angular/animations
+npm install tailwindcss postcss autoprefixer
+npm install animate-css-grid
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Follow the official documentation to set up Tailwind CSS and Angular Material in your project if not already configured.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+### Running the App
+Start the development server:
+```sh
+npm start
 ```
+Visit [http://localhost:4200](http://localhost:4200) in your browser.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Project Structure
+- `src/app/components/` - Widget components and dialogs
+- `src/app/pages/dashboard/` - Dashboard and widget panel
+- `src/app/services/` - State management and theme service
+- `src/styles.css` - Global styles (includes Tailwind and custom theme)
 
-```bash
-ng generate --help
-```
+## Technologies Used
+- Angular 19
+- Angular Material
+- Tailwind CSS
+- Animate CSS Grid
 
-## Building
+## Copying to Another Project
+To reuse all dashboard widget features in another Angular project, copy the following files and folders:
+- `src/app/components/` (all widget-related components)
+- `src/app/pages/dashboard/` (dashboard and widget panel)
+- `src/app/services/dashboard.service.ts` and `src/app/services/theme.service.ts`
+- `src/app/models/dashboard.model.ts`
+- `src/styles.css` and `src/theme.css`
+- Update your `angular.json` and Tailwind/PostCSS configs as needed
 
-To build the project run:
+## Customization
+You can add new widgets by extending the `Widget` model and updating the `DashboardService`.
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## License
+This project is licensed under the MIT License.
